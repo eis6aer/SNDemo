@@ -1,21 +1,20 @@
 package com.developer76.sndemo.ui
 
-import com.developer76.sndemo.data.Post
+import com.developer76.sndemo.data.Comment
 import com.developer76.sndemo.data.interfaces.IPost
 import com.developer76.sndemo.data.server.ApiFactory
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 
-class MainViewModel {
-
+class DetailViewModel {
     val apiService by lazy {
         ApiFactory.getService(IPost::class.java)
     }
 
-    fun getPosts() : Observable<Response<List<Post>>>
+    fun getComments(postId : Int) : Observable<Response<List<Comment>>>
     {
-        return apiService.getPosts()
+        return apiService.getComments(postId)
                 .subscribeOn(Schedulers.newThread())
     }
 }

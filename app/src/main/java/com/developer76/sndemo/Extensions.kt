@@ -1,6 +1,7 @@
 package com.developer76.sndemo
 
 import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,4 +18,9 @@ fun Activity.toast(message: String)
 fun View.toast(message: String)
 {
     Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
+}
+
+fun Activity.goToActivity(activity: Class<*>)
+{
+    startActivity(Intent(this,activity))
 }
